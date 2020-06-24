@@ -28,6 +28,10 @@ const changeState = (prop) => {
 const blueFood = changeState("soil")(5);
 const giveLight = changeState("light")(5);
 const hydrate = changeState("water")(5);
+const greenFood = changeState("soil")(10);
+const depriveLight = changeState("light")(-2);
+const erosion = changeState("soil")(-2);
+const dehydrate = changeState("water")(-2);
 
 
 $(document).ready(function() {
@@ -35,26 +39,40 @@ $(document).ready(function() {
 // This function has side effects because we are using jQuery. Manipulating the DOM will always be a side effect.
   $('#feed').click(function() {
     const newState = plantOne(blueFood);
-    $('#soil-value').text(newState.soil);
+    const nextState = plantOne(depriveLight);
+    $('#soil-value').text(nextState.soil);
+    $('#light-value').text(nextState.light);
   });
   $('#water').click(function() {
     const newState = plantOne(hydrate);
-    $('#water-value').text(newState.water);
+    const nextState = plantOne(erosion);
+    $('#soil-value').text(nextState.soil);
+    $('#water-value').text(nextState.water);
   });
   $('#light').click(function() {
     const newState = plantOne(giveLight);
-    $('#light-value').text(newState.light);
+    const nextState = plantOne(dehydrate);
+    $('#water-value').text(nextState.water);
+    $('#light-value').text(nextState.light);
   });
   $('#feed2').click(function() {
     const newState = plantTwo(blueFood);
-    $('#soil-value2').text(newState.soil);
+    const nextState = plantTwo(depriveLight);
+    $('#soil-value2').text(nextState.soil);
+  });
+  $('#feed3').click(function() {
+    const newState = plantTwo(greenFood);
+    const nextState = plantTwo(depriveLight);
+    $('#soil-value2').text(nextState.soil);
   });
   $('#water2').click(function() {
     const newState = plantTwo(hydrate);
-    $('#water-value2').text(newState.water);
+    const nextState = plantTwo(erosion);
+    $('#water-value2').text(nextState.water);
   });
   $('#light2').click(function() {
     const newState = plantTwo(giveLight);
-    $('#light-value2').text(newState.light);
+    const nextState = plantTwo(dehydrate);
+    $('#light-value2').text(nextState.light);
   });
 });
