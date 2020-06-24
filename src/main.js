@@ -58,21 +58,25 @@ $(document).ready(function() {
   $('#feed2').click(function() {
     const newState = plantTwo(blueFood);
     const nextState = plantTwo(depriveLight);
+    $('#light-value2').text(nextState.light);
     $('#soil-value2').text(nextState.soil);
   });
   $('#feed3').click(function() {
     const newState = plantTwo(greenFood);
     const nextState = plantTwo(depriveLight);
+    $('#light-value2').text(nextState.light);
     $('#soil-value2').text(nextState.soil);
   });
   $('#water2').click(function() {
     const newState = plantTwo(hydrate);
     const nextState = plantTwo(erosion);
+    $('#soil-value2').text(nextState.soil);
     $('#water-value2').text(nextState.water);
   });
   $('#light2').click(function() {
     const newState = plantTwo(giveLight);
-    const nextState = plantTwo(dehydrate);
+    const nextState = plantOne(dehydrate);
+    $('#water-value2').text(nextState.water);
     $('#light-value2').text(nextState.light);
   });
 });
